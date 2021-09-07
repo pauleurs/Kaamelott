@@ -1,0 +1,71 @@
+{
+    "data": {
+        "getTeammates": {
+            "items": [
+                {
+                    "firstname": "Alexandre",
+                    "lastname": "Astier",
+                    "profilPic": "assets/images/1.jpeg",
+                    "description": "Roi Arthur",
+                    "url_link": "https://fr.wikipedia.org/wiki/Personnages_de_Kaamelott#Arthur"
+                },
+                {
+                    "firstname": "Franck",
+                    "lastname": "Pitiot",
+                    "profilPic": "assets/images/2.jpeg",
+                    "description": "Perceval",
+                    "url_link": "https://fr.wikipedia.org/wiki/Personnages_de_Kaamelott#Perceval"
+                },
+                {
+                    "firstname": "Lionnel",
+                    "lastname": "Astier",
+                    "profilPic": "assets/images/3.jpeg",
+                    "description": "Léodagan",
+                    "url_link": "https://fr.wikipedia.org/wiki/Personnages_de_Kaamelott#L%C3%A9odagan"
+                },
+                {
+                    "firstname": "Jean-Christophe",
+                    "lastname": "Hembert",
+                    "description": "Karadoc",
+                    "profilPic": ""
+                },
+                {
+                    "firstname": "Anne",
+                    "lastname": "Girouard",
+                    "profilPic": "assets/images/5.jpeg",
+                    "description": "Guenièvre",
+                    "url_link": "https://fr.wikipedia.org/wiki/Personnages_de_Kaamelott#Gueni%C3%A8vre"
+                },
+                {
+                    "firstname": "Nicolas",
+                    "lastname": "Gabion",
+                    "profilPic": "assets/images/6.jpeg",
+                    "description": "Bohort",
+                    "url_link": "https://fr.wikipedia.org/wiki/Personnages_de_Kaamelott#Bohort"
+                },
+                {
+                    "firstname": "Jacques",
+                    "lastname": "Chambon",
+                    "profilPic": "assets/images/7.jpeg",
+                    "description": "Merlin",
+                    "url_link": "https://fr.wikipedia.org/wiki/Personnages_de_Kaamelott#Merlin"
+                },
+                {
+                    "firstname": "Audrey",
+                    "lastname": "Fleurot",
+                    "profilPic": "assets/images/8.jpeg",
+                    "description": "La Dame du Lac",
+                    "url_link": "https://fr.wikipedia.org/wiki/Personnages_de_Kaamelott#La_Dame_du_Lac"
+                },
+                {
+                    "firstname": "Antoine de Caunes",
+                    "lastname": "",
+                    "profilPic": "assets/images/9.jpeg",
+                    "description": "Dagonet",
+                    "url_link": "https://fr.wikipedia.org/wiki/Personnages_de_Kaamelott#Dagonet"
+                }
+            ],
+            "count": "9"
+        }
+    }
+}
