@@ -22,7 +22,7 @@ class TeammatesModel extends StatefulWidget {
 
 class TeammatesModelState extends State<TeammatesModel> {
   bool _isError = false;
-  var res;
+  var res = <String, dynamic>{};
   var data;
   @override
   initState() {
@@ -32,14 +32,15 @@ class TeammatesModelState extends State<TeammatesModel> {
 
   read() async {
     var read = await jsonToMap('data/teammates.json');
+
     setState(() {
       res = read;
     });
-    data = res["data"]["getTeammates"]["items"];
   }
 
   @override
   Widget build(BuildContext context) {
+    data = res["data"]["getTeammates"]["items"];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Casting'),
@@ -50,11 +51,12 @@ class TeammatesModelState extends State<TeammatesModel> {
         itemBuilder: (context, index) {
           return ListTile(
             leading: CircleAvatar(
-              backgroundImage: AssetImage(data[index]["profilPic"]),
+              backgroundImage:
+                  this._isError ? null : AssetImage(data[index]["profilPic"]),
               backgroundColor: Colors.grey,
               onBackgroundImageError: (_, __) {
                 setState(() {
-                  this._isError = true;
+                  print("okk");
                 });
               },
             ),
