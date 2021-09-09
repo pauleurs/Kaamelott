@@ -21,21 +21,24 @@ class TeammatesModel extends StatefulWidget {
 }
 
 class TeammatesModelState extends State<TeammatesModel> {
-  bool _isError = false;
+  var _isError = [-1];
   var res = <String, dynamic>{};
   var data;
   @override
   initState() {
     super.initState();
+
     read();
   }
 
   read() async {
-    var read = await jsonToMap('data/teammates.json');
+    res = await jsonToMap('data/teammates.json');
+    setState(() {});
+  }
 
-    setState(() {
-      res = read;
-    });
+  bool checkImage(index) {
+    for (var e in _isError) if (e == index) return true;
+    return false;
   }
 
   @override
@@ -51,12 +54,17 @@ class TeammatesModelState extends State<TeammatesModel> {
         itemBuilder: (context, index) {
           return ListTile(
             leading: CircleAvatar(
-              backgroundImage:
-                  this._isError ? null : AssetImage(data[index]["profilPic"]),
-              backgroundColor: Colors.grey,
+              backgroundColor: checkImage(index) ? Colors.grey : null,
+              backgroundImage: AssetImage(data[index]["profilPic"]),
+              child: checkImage(index)
+                  ? Text(
+                      data[index]["firstname"][0] + data[index]["lastname"][0],
+                      style: TextStyle(color: Colors.black),
+                    )
+                  : null,
               onBackgroundImageError: (_, __) {
                 setState(() {
-                  print("okk");
+                  _isError.insert(_isError.length, index);
                 });
               },
             ),
