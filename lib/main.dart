@@ -31,7 +31,7 @@ class LoginPage extends StatefulWidget {
 
 class LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-
+  bool _isOk = true;
   var mail;
   var passworld;
   @override
@@ -95,6 +95,14 @@ class LoginPageState extends State<LoginPage> {
                 child: Text('Mot de passe oublie ?'),
               ),
             ),
+            this._isOk
+                ? Container()
+                : Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Email ou mot de passe incorect",
+                      style: TextStyle(color: Color(0xffEC6366)),
+                    )),
             Container(
               padding: EdgeInsets.fromLTRB(30, 130, 30, 0),
               child: ElevatedButton(
@@ -102,21 +110,14 @@ class LoginPageState extends State<LoginPage> {
                   primary: Color(0xff6A290F),
                 ),
                 onPressed: () {
-                  print(mail);
-                  print(passworld);
                   if (_formKey.currentState!.validate()) {
-                    print(mail);
-                    print(passworld);
                     if (mail == "welcome@imhotep.io" &&
                         passworld == "MySecretPassword1234#") {
                       Navigator.pushReplacementNamed(context, '/second');
                     } else {
-                      final snackBar = SnackBar(
-                        content: Text("Email ou mot de passe"),
-                        elevation: 150,
-                        behavior: SnackBarBehavior.floating,
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      setState(() {
+                        this._isOk = false;
+                      });
                     }
                   }
                 },
