@@ -40,73 +40,77 @@ class LoginPageState extends State<LoginPage> {
       body: Form(
         key: _formKey,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: ClipOval(
-                child: Image(
-                  height: 150,
+            Column(
+              children: <Widget>[
+                Container(height: 20),
+                ClipOval(
+                  child: Image(
+                    height: 150,
+                    image: AssetImage('assets/images/logo.jpeg'),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 50, 20, 0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.mail),
+                      hintText: 'Adresse mail',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Champs requis';
+                      }
+                      mail = value;
+                      return null;
+                    },
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                  child: TextFormField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: 'Mot de passe',
+                      icon: Icon(Icons.lock),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Champs requis';
+                      }
+                      passworld = value;
+                      return null;
+                    },
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(0, 15, 30, 20),
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      primary: Color(0xff9B3F1B),
+                    ),
+                    child: Text('Mot de passe oublie ?'),
+                  ),
+                ),
+                Container(
                   alignment: Alignment.center,
-                  image: AssetImage('assets/images/logo.jpeg'),
+                  child: this._isOk
+                      ? null
+                      : Text(
+                          "Email ou mot de passe incorect",
+                          style: TextStyle(color: Color(0xffEC6366)),
+                        ),
                 ),
-              ),
+              ],
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  icon: Icon(Icons.mail),
-                  hintText: 'Adresse mail',
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Champs requis';
-                  }
-                  mail = value;
-                  return null;
-                },
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: TextFormField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: 'Mot de passe',
-                  icon: Icon(Icons.lock),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Champs requis';
-                  }
-                  passworld = value;
-                  return null;
-                },
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(0, 15, 30, 0),
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  primary: Color(0xff9B3F1B),
-                ),
-                child: Text('Mot de passe oublie ?'),
-              ),
-            ),
-            this._isOk
-                ? Container()
-                : Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Email ou mot de passe incorect",
-                      style: TextStyle(color: Color(0xffEC6366)),
-                    )),
-            Container(
-              padding: EdgeInsets.fromLTRB(30, 130, 30, 0),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(20),
                   primary: Color(0xff6A290F),
                 ),
                 onPressed: () {
@@ -122,8 +126,10 @@ class LoginPageState extends State<LoginPage> {
                   }
                 },
                 child: new Align(
-                  alignment: Alignment.bottomCenter,
-                  child: new Text('Se connecte'),
+                  alignment: Alignment.center,
+                  child: new Text(
+                    'Se connecte',
+                  ),
                 ),
               ),
             ),
